@@ -31,6 +31,6 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 ![Docker Pull1](images/docker-cafe.png)
 
-![Docker run](images/docker%20run.png.png)
+![Docker run](images/dockerrun.png)
 
-![Docker web](images/website.png.png)
+![Docker web](images/website.png)
