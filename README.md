@@ -27,3 +27,10 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
     * To create the PAT I personally went onto Dockerhub went into Account settings then PAT, i created a PAT saved it somewhere secure and used that. I personally made it allowing read and write access so it can be pulled from Dockerhub. 
 
     * [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafe-website/general)
+
+
+![Docker Pull1](images/docker-cafe.png)
+
+![Docker run](images/docker%20run.png.png)
+
+![Docker web](images/website.png.png)
