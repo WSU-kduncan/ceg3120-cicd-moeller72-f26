@@ -38,7 +38,11 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 ## Part 2 Github Actions and DockerHub
 
+* This is after the fails. I just ran the third test after pointing the file toward my `Dockerfile` inside `web-content` it ran and claims it was successful. I Also checked Docker hub and it did confirm that it pushed to my docker hub (images below).
 
+![Successful Test](images/Success1.png)
+
+![pushed to Dockerhub](images/dockerhub-push.png)
 
 * Documenting Fails along the way. This was after my first test after adding in `.github/workflows/docker-workflow.yml` Judging by what im reading I need to add a way to point the script towards the folder `/web-content`.
 
