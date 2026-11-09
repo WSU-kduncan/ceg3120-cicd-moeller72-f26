@@ -51,6 +51,7 @@ jobs:
         id: docker_build 
         uses: docker/build-push-action@v7
         with:
+          context: ./web-content
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
           # Example getting fancy with tags: 

@@ -40,6 +40,11 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 
 
+* Documenting Fails along the way. This was after my first test after adding in `.github/workflows/docker-workflow.yml` Judging by what im reading I need to add a way to point the script towards the folder `/web-content`.
+
+![Failedtest](images/Failedtest.png)
+<br>
+
 ![Github actions](images/githubaction.png.png)
 
 
