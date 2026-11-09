@@ -42,7 +42,12 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 * Documenting Fails along the way. This was after my first test after adding in `.github/workflows/docker-workflow.yml` Judging by what im reading I need to add a way to point the script towards the folder `/web-content`.
 
+* Test 2 failed for the same reason just different execution. I pointed the context to the folder `/web-content` from what I read that simply treats that as the Root Directory So it wasn't exactly neeed. Intstead I will replace conext wtih a `file` tag as well and point at the dockerfile with `./web-content/Dockerfile`
+
 ![Failedtest](images/Failedtest.png)
+<br>
+
+![Failedtest2](images/failedtest2.png.png)
 <br>
 
 ![Github actions](images/githubaction.png.png)
