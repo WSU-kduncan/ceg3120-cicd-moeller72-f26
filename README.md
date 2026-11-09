@@ -41,3 +41,20 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 
 ![Github actions](images/githubaction.png.png)
+
+
+
+
+
+
+
+## Sources
+
+[Help configuring GitHub actions](https://docs.docker.com/build/ci/github-actions/configure-builder/#version-pinning)
+
+[More help with Configuring Github actions](https://github.com/docker/login-action)
+
+[Additional Help with actions](https://github.com/marketplace/actions/build-and-push-docker-images)
+
+[Inputs and tags for build-push actions.](https://github.com/docker/build-push-action#inputs)
+
