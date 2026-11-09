@@ -1,6 +1,6 @@
 ## AI Disclaimer:
 
-I did not make or create the website seen in cafe, index.html, menu.html and styles.css were made via ChatGPT with the prompt given below
+I did not make or create the website seen in cafe, index.html, menu.html and styles.css were made via ChatGPT with the prompt given below.
 
 
 ### Prompt:
