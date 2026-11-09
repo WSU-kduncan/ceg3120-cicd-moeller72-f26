@@ -34,3 +34,10 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Docker run](images/dockerrun.png)
 
 ![Docker web](images/website.png)
+
+
+## Part 2 Github Actions and DockerHub
+
+
+
+![Github actions](images/githubaction.png.png)
