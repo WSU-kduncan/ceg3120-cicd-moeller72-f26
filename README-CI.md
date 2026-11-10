@@ -139,9 +139,63 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 ## Part 3
 
+1. Generating `tag`s
 
+* to see tage in a github repo you want to run either `git tag` or `git tag -l` 
 
+* To generate a tag you want to run `git tag -a v#.#.# -m "commit message here"`
+    * With `git tag -a` the `-a` means annotate (to note it is not required to use `-a` from this link [Gittag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) I used to help me understand tagging more other options are available but `-a` is noted as one of the simplest ways.) Followed by `v#.#.#` which is the version number you want then `-m ""` which is the tag commit message.
 
+* From the same source referenced above the way you push a tag (I messed this up) Is `git push origin v#.#.#` not just git push (which is what I tried.)
+
+2. Versioning explanation.
+
+* The new trigger is now 
+```
+on:
+  # triggers on push to main branch
+  push:
+    tags:
+      - 'v*.*.*'
+```
+* This is essentially on a push, trigger when a tag following `v*.*.*` for my test it was `v1.0.0` and `v1.1.0`
+
+* The major changes on the workflow steps are.
+
+```
+       name: Build and push
+
+        id: docker_build 
+        uses: docker/build-push-action@v7
+        with:
+          file: ./web-content/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # Example getting fancy with tags: 
+          #   https://github.com/docker/build-push-action/blob/master/docs/advanced/tags-labels.md
+```
+
+And
+
+```
+name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}
+          tags: |
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+```
+
+* From build and push the tags were added being `tags: ${{ steps.meta.outputs.tags }}` and `labels: ${{ steps.meta.outputs.labels }}`
+    * These work by (looking at tags) taking `steps` the stuff from `meta` takes them and `outputs` them and then it retrieves the new docker image `tag`
+    * the labels work the same way just different what it outputs as this one retrieves the generated image `label` instead of `tags`.
+
+    * For the dockerhub repo, when i added in the new major tag v1.0.0 docker now has that as the main version and I confirmed after also submitting v1.1.0 that v1.0.0 was not touched so it can be looked back at.
+
+    * [Path to workflow](.github/workflows/docker-workflow.yml)
 
 ## Sources
 
