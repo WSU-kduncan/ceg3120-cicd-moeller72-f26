@@ -10,7 +10,8 @@ name: Docker-Login-Build-Push
 on:
   # triggers on push to main branch
   push:
-    branches: [main]
+    tags:
+      - 'v*.*.*'
 # variables used in this workflow
 env:
   # variable holding my repo folder name (using DockerHub is assumed)
@@ -32,6 +33,17 @@ jobs:
       # 	BuildKit is designed to work well for building for multiple platforms and not 
       #		only for the architecture and operating system that the user invoking the build happens to run.
       #	Docs on docker build vs buildx: https://docs.docker.com/buildx/working-with-buildx/
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}
+          tags: |
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
       # Login in to DockerHub, credentials stored as GitHub repository secrets
@@ -53,6 +65,7 @@ jobs:
         with:
           file: ./web-content/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           # Example getting fancy with tags: 
           #   https://github.com/docker/build-push-action/blob/master/docs/advanced/tags-labels.md
