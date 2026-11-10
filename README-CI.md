@@ -71,7 +71,7 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 * This shows that its pointed at my Dockerfile in the folder `web-content/Dockerfile` with `push` being `true` so it will `push` on commit to main. With tags of `secrets` using my docker username and token with the environment being the repo `cafeweb` using the latest version. (I noticed the image also cropped out `DOCKER_HUB_REPO` but I had to change that repo name to `cafeweb` above to point at it correctly.)
 
 
-
+* [Part2 Permalink](https://github.com/WSU-kduncan/ceg3120-cicd-moeller72-f26/blob/0eb1a92563f3358048dbe324ad2bfc0bd317b270/.github/workflows/docker-workflow.yml)
 
 
 
@@ -110,7 +110,7 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Github actions](images/githubaction.png)
 
 
-* [Permalink](https://github.com/WSU-kduncan/ceg3120-cicd-moeller72-f26/blob/65a1561133e90e2e39bcb799fff8621e17726ebf/README-CI.md)
+* [Permalink](https://github.com/WSU-kduncan/ceg3120-cicd-moeller72-f26/blob/0eb1a92563f3358048dbe324ad2bfc0bd317b270/.github/workflows/docker-workflow.yml)
 
 
 
