@@ -110,8 +110,9 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Github actions](images/githubaction.png)
 
 
+* Permalink
 
-
+https://github.com/WSU-kduncan/ceg3120-cicd-moeller72-f26/blob/65a1561133e90e2e39bcb799fff8621e17726ebf/README-CI.md
 
 
 
