@@ -50,9 +50,34 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 <br>
 
-    *  
+* This shows that the trigger is when its pushed to the main branch. This is the area you would edit the file to change the trigger.
 
 ![Steps1](images/steps1.png)
+
+* This section is the steps that occur in order starting from Checkout repo with `checkout@v7`. From my research on the topic this was the latest version I could find.
+
+    * The next step is for docker buildx with `setup-buildx-action@v4` From what I could find v4 was the most recent version.
+
+    * The next step is to login to docker hub using `login-action@v4` Version 4 was the most recent version I could personally find. this has a `with` tag with the username and password having `secrets.DOCKER_USERNAME` and the password. This makes it when pushed to main it will login in and with the secrets it will look at the secrets tab looking for the names `DOCKER_USERNAME` and `DOCKER_TOKEN` which have been saved to secrets. 
+    
+    * (update: 11/10/2026. While looking over everything i se the note for v2 allowing the use of `buildx`. The link for me Doesn't seem to work so I'm not sure if that's required so Ill continue and look back at it once part 2 is complete and if its needed for part 3)
+
+    * Lastly the laststep is build and push this uses `build-push-action@v7` which is the most recent version I could personally fine. It got accidentially cropped out of the image but in the `with` tab it has: 
+```
+    file: ./web-content/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
+```
+* This shows that its pointed at my Dockerfile in the folder `web-content/Dockerfile` with `push` being `true` so it will `push` on commit to main. With tags of `secrets` using my docker username and token with the environment being the repo `cafeweb` using the latest version. (I noticed the image also cropped out `DOCKER_HUB_REPO` but I had to change that repo name to `cafeweb` above to point at it correctly.)
+
+
+
+
+
+
+* [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafe-website/general)
+
+
 
 
 * This is after the fails. I just ran the third test after pointing the file toward my `Dockerfile` inside `web-content` it ran and claims it was successful. I Also checked Docker hub and it did confirm that it pushed to my docker hub (images below).
