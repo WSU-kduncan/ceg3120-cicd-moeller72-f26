@@ -110,22 +110,32 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Docker ps and webpage](images/proof1.png)
 <br>
 
+* This proves that the after running my `dockerfile` to my docker hub, pulling it and running it the local host does show my webpages using its CSS.
+
 2. 
 ![Github actions](images/githubaction.png)
 <br>
 
+* This Proves that i have added secrets in the github actions which will be used by the workflow.
+
 3. 
 ![Successful Test](images/Success1.png)
 <br>
+
+* This proves that after I commit to `main` it shows a successful workflow and its sha value.
 
 4. 
 ![image1](images/proof2.png)
 ![image2](images/proof3.png)
 <br>
 
+* This proves that after i created a branch (Test) and pushed it to github it did not run the workflow
+
 5. 
+![Proof5](images/proof5.png)
+<br>
 
-
+* This proves that after i edited my `index.html` file that after being pushed to main and the workflow ran it successfully pushed to my `dockerhub` which i pulled and ran for this image.
 
 ## Part 3
 
