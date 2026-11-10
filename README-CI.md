@@ -110,10 +110,6 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Github actions](images/githubaction.png)
 
 
-* [Permalink](https://github.com/WSU-kduncan/ceg3120-cicd-moeller72-f26/blob/0eb1a92563f3358048dbe324ad2bfc0bd317b270/.github/workflows/docker-workflow.yml)
-
-
-
 
 ## Sources
 
