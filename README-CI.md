@@ -118,7 +118,7 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Successful Test](images/Success1.png)
 <br>
 
-4. 
+4. Testing for this image right here.
 
 5. 
 
