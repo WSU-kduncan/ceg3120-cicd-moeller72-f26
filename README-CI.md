@@ -104,10 +104,10 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 ![Failedtest](images/Failedtest.png)
 <br>
 
-![Failedtest2](images/failedtest2.png.png)
+![Failedtest2](images/failedtest2.png)
 <br>
 
-![Github actions](images/githubaction.png.png)
+![Github actions](images/githubaction.png)
 
 
 
