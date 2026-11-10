@@ -91,12 +91,6 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 <br>
 
 
-
-
-
-
-
-
 * Documenting Fails along the way. This was after my first test after adding in `.github/workflows/docker-workflow.yml` Judging by what im reading I need to add a way to point the script towards the folder `/web-content`.
 
 * Test 2 failed for the same reason just different execution. I pointed the context to the folder `/web-content` from what I read that simply treats that as the Root Directory So it wasn't exactly need. Instead I will replace context with a `file` tag as well and point at the dockerfile with `./web-content/Dockerfile`
@@ -108,6 +102,30 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 <br>
 
 ![Github actions](images/githubaction.png)
+
+
+## Part 2 Proof
+
+1. 
+![Docker ps and webpage](images/proof1.png)
+<br>
+
+2. 
+![Github actions](images/githubaction.png)
+<br>
+
+3. 
+![Successful Test](images/Success1.png)
+<br>
+
+4. 
+
+5. 
+
+
+
+## Part 3
+
 
 
 
