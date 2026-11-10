@@ -153,3 +153,4 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 [Inputs and tags for build-push actions.](https://github.com/docker/build-push-action#inputs)
 
+[Help with understanding how to use git tag.](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
