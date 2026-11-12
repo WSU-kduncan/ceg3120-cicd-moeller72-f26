@@ -212,6 +212,8 @@ name: Docker meta
 <br>
 
 ![proof6](images/proof6.png)
+
+* This proves that after running `git tag -l` that the previous versions tagged and commited are listed being `1.0.0, 1.1.0, 1.2.0`
 <br>
 
 7. 
@@ -219,18 +221,24 @@ name: Docker meta
 
 ![proof7.1](images/proof7_1.png)
 ![proof7.2](images/proof7_2.png)
+
+* These images prove that when a basic commit goes through it does not cause the action to trigger unless a `tag` is committed and pushed.
 <br>
 
 8. 
 <br>
 
 ![proof8](images/proof8.png)
+
+* This proves on docker hub that when pushed with a `tag` and the action workflow runs that a new version is created. Updating `Latest, 1.2 and 1` while leaving `1.1 and 1.0` alone. Allowing you to pull old versions
 <br>
 
 9. 
 <br>
 
 ![proof8](images/proof8.png)
+
+* Same image as in Proof 8 as it shows the new versions. Not just Major but also Major minor versions.
 <br>
 
 10. 
@@ -238,6 +246,8 @@ name: Docker meta
 
 ![proof10_1](images/proof10_1.png)
 ![proof10_2](images/proof10_2.png)
+
+* These images show me pulling my first `1.0.0` version which was edited for proof 5 and then my `1.2.0` version which is shown by the title header change.
 <br>
 
 ## Part 4 Diagram
@@ -270,3 +280,15 @@ on:
 [Inputs and tags for build-push actions.](https://github.com/docker/build-push-action#inputs)
 
 [Help with understanding how to use git tag.](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
+
+[Docker docs for github actions](https://docs.docker.com/build/ci/github-actions/)
+
+[Publishing images to dockerhub](https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images#publishing-images-to-docker-hub)
+
+[Docker metadata action help](https://github.com/docker/metadata-action?tab=readme-ov-file#semver)
+
+[Manage tags and labels in dockerhub](https://docs.docker.com/build/ci/github-actions/manage-tags-labels/)
+
+* I utilized every source here to assist me in developing this project. Many of these were used to help me develop out the action workflow. There were a few others I used to make sure my original docker file works fine, as well as figuring out how to work with actions on github. 
+
+* Note: Thank you for great Sources! The sources you provided were very good in this assignment.
