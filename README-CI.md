@@ -190,10 +190,66 @@ name: Docker meta
 ```
 
 * From build and push the tags were added being `tags: ${{ steps.meta.outputs.tags }}` and `labels: ${{ steps.meta.outputs.labels }}`
-    * These work by (looking at tags) taking `steps` the stuff from `meta` takes them and `outputs` them and then it retrieves the new docker image `tag`
-    * the labels work the same way just different what it outputs as this one retrieves the generated image `label` instead of `tags`.
+    * The new `tags` line will retrieve the generated docker image tag and passes them into the build and push step. This is used to version the image publish on dockerhub (`1.0.0 1.1.0 1.2.0` etc.).
 
-    * For the dockerhub repo, when i added in the new major tag v1.0.0 docker now has that as the main version and I confirmed after also submitting v1.1.0 that v1.0.0 was not touched so it can be looked back at.
+    * labels Retrieves the docker image `lables` and passes them into the push step and applies the `metadata` to it. Which provides additional information about said image.
+
+    * For the Dockerhub repo, when i added in the new major tag v1.0.0 docker now has that as the main version and I confirmed after also submitting v1.1.0 that v1.0.0 was not touched so it can be looked back at.
+
+3. 
+
+* I tested to ensure my workflow did its tasking by changing my index file in all my renditions a little bit. in `1.0.0` i kept it the same as when I changed it for Part 2. for 1.1.0 I changed the header and I did it one more time for 1.2.0 to confirm that the versions do change and also hold on to the previous version.
+
+* I verified the image by pulling the new dockerhub version onto my local pc, running it and looking at my index page to see if the change applied.
+
+[Dockerhub Repo](https://hub.docker.com/repository/docker/panoramicsunroof1/cafeweb/general)
+
+* This link will take you to my panoramicsunroof1/cafeweb repo and in the tags section you can see my versions `1, 1.0, 1.1, and 1.2` (I used 1.0.0 so i imagine it wont show the final .0 until I add in a patch version which was not required.)
+
+## Part 3 Proof images
+
+6. 
+<br>
+
+![proof6](image.png)
+<br>
+
+7. 
+<br>
+
+<br>
+
+8. 
+<br>
+
+<br>
+
+9. 
+<br>
+
+<br>
+
+10. 
+<br>
+
+<br>
+
+## Part 4 Diagram
+
+* ![Diagram](images/Diagram.png)
+
+* This diagram shows a flow and loop of how this github action workflow would run. It starts with the user making changes, commiting them and then adding a tag and commiting the tag as well. In the github repo if your tag follows the versioning.
+```
+on:
+  # triggers on push to main branch
+  push:
+    tags:
+      - 'v*.*.*'
+```
+* it will begin the workflow, moving to the `metadata` to get the tags and labels as nessesary and then build and push will tag as needed and push it to docker hub
+
+* In docker hub the image becomes published with a tag of the version which allows users to pull the specific version they would like. This can loop back around to a user / developer pulling that new image and adding more and so on. (pulling obviously isn't required for the developer in this project, but lets say this was an open project to multiple people to edit as they see fit, that would be a step.)
+
 
     * [Path to workflow](.github/workflows/docker-workflow.yml)
 
