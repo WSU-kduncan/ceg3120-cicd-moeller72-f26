@@ -211,27 +211,33 @@ name: Docker meta
 6. 
 <br>
 
-![proof6](image.png)
+![proof6](images/proof6.png)
 <br>
 
 7. 
 <br>
 
+![proof7.1](images/proof7_1.png)
+![proof7.2](images/proof7_2.png)
 <br>
 
 8. 
 <br>
 
+![proof8](images/proof8.png)
 <br>
 
 9. 
 <br>
 
+![proof8](images/proof8.png)
 <br>
 
 10. 
 <br>
 
+![proof10_1](images/proof10_1.png)
+![proof10_2](images/proof10_2.png)
 <br>
 
 ## Part 4 Diagram
