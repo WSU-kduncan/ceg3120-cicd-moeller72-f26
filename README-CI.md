@@ -156,7 +156,8 @@ on:
 * This proves that after i created a branch (Test) and pushed it to github it did not run the workflow
 
 5. 
-![Proof5](images/proof5.png)
+![proof5](images/proof5.png)
+
 <br>
 
 * This proves that after i edited my `index.html` file that after being pushed to main and the workflow ran it successfully pushed to my `dockerhub` which i pulled and ran for this image.
