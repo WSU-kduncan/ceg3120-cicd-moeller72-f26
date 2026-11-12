@@ -2,15 +2,38 @@
 Course work for CEG 3120 at Wright State University, Department of Computer Science and Engineering
 
 
-## Building a web service Container
+## Part 4 Diagram
+
+* Overview: For this project, the objective was to utilize GitHub Actions workflows to enable commits to our repository and implement semantic versioning for our GitHub / Docker Hub repositories. This will allow us to reference specific tags and access Docker images at specific versions if we needed to look back at older images or points in time.
+
+* ![Diagram](images/Diagram.png)
+
+* This diagram shows a flow and loop of how this GitHub action workflow would run. It starts with the user making changes, committing them and then creating a `tag` that's pointing at that current commit and pushing the `tag` as well. In the GitHub repo if your tag follows the versioning.
+```
+on:
+  # triggers on push to main branch
+  push:
+    tags:
+      - 'v*.*.*'
+```
+* it will begin the workflow, moving to the `metadata` to get the tags and labels as necessary and then `build and push` will `tag` as defined and push it to docker hub
+
+* In docker hub the image becomes published with the new `tag` of the version which allows users to pull the specific version they would like. This can loop back around to a user / developer pulling that new image and adding more and so on. (pulling obviously isn't required for the developer in this project, but lets say this was an open project to multiple people to edit as they see fit, that would be a step.)
+
+
+    * [Path to workflow](.github/workflows/docker-workflow.yml)
+
+
+## Part 1: Building a web service Container
+
 
 1. For this project I had Ai generate me a website with two pages and one CSS (Prompt can be found in the README.md inside of `web-content`) this site has a home page and menu page as it acts like a cafe website and then the css style sheet. (Home pages is on index.html menu being menu.html)
 
-2. The Dockerfile is being used in this project to be a container with appache httpd2.4 with website files to be used on a server. [Dockerfile](web-content/Dockerfile) The commands inside this docker file are simply 
+2. The Dockerfile is being used in this project to be a container with apache httpd2.4 with website files to be used on a server. [Dockerfile](web-content/Dockerfile) The commands inside this docker file are simply 
 `FROM httpd:2.4`
 `COPY web-content/ /usr/local/apache2/htdocs/`
 
-3. The FROM uses Apache HTTP server image the 2.4 is the version of the image. The COPY command copys the content of folder (website files and all) into the `/usr/local/apache2/htdocs/` directory. Which is the default directory used by httpd.
+3. The FROM uses Apache HTTP server image the 2.4 is the version of the image. The COPY command copies the content of folder (website files and all) into the `/usr/local/apache2/htdocs/` directory. Which is the default directory used by httpd.
 
 4. (Much of this section I'll be putting in what i put at the bottom here) I built the docker container using the Dockerfile using `docker build -t test-image:latest -f web-content/Dockerfile .` This command builds the container with the tag of test-image:latest with `-f` meaning file / url i pointed it to `web-content/Dockerfile .` 
 
@@ -20,13 +43,13 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
     * I then pushed my containers image to a public DockerHub repo on my account. To ensure it was tagged correctly with my account username.
 
-    * I ran `docker tag test-image:latest panoramicsunroof1/cafe-website:latest` which created a new tagged copy of the original `test-images:latest` to `panoramicsunroof1/cafe-website:latest` 
+    * I ran `docker tag test-image:latest panoramicsunroof1/cafeweb:latest` which created a new tagged copy of the original `test-images:latest` to `panoramicsunroof1/cafeweb:latest` 
 
-    * I then pushed it to my DockerHub account with ` docker push panoramicsunroof1/cafe-website:latest` which pushed that local image to my DockerHub public repo. 
+    * I then pushed it to my DockerHub account with ` docker push panoramicsunroof1/cafeweb:latest` which pushed that local image to my DockerHub public repo. 
 
     * To create the PAT I personally went onto Dockerhub went into Account settings then PAT, i created a PAT saved it somewhere secure and used that. I personally made it allowing read and write access so it can be pulled from Dockerhub. 
 
-    * [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafe-website/general)
+    * [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafeweb/general)
 
 
 ![Docker Pull1](images/docker-cafe.png)
@@ -41,6 +64,7 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 1. For this project making the PAT is just the same as it was for project 5. I went onto Dockerhub and in Account settings I created a PAT with read and write privileges (which allows the ability to push and pull that repo). I then saved that to a secure place.
 
     * In the github repo Secrets tab in settings I created DOCKER_USERNAME with my docker username as the variable and DOCKER_TOKEN with the PAT that I just created. 
+        * To get into the secrets, you want to open settings. Navigate to secrets and variables. Click on actions, select new repo secret and add what is needed.
 
 2. For this work flow the name was `Docker-Login-Build-Push` With the event / action triggers being. `On push to the main branch`
 
@@ -75,7 +99,7 @@ Course work for CEG 3120 at Wright State University, Department of Computer Scie
 
 
 
-* [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafe-website/general)
+* [Link to my Dockerhub](https://hub.docker.com/repository/docker/panoramicsunroof1/cafeweb/general)
 
 
 
@@ -194,17 +218,17 @@ name: Docker meta
 
     * labels Retrieves the docker image `lables` and passes them into the push step and applies the `metadata` to it. Which provides additional information about said image.
 
-    * For the Dockerhub repo, when i added in the new major tag v1.0.0 docker now has that as the main version and I confirmed after also submitting v1.1.0 that v1.0.0 was not touched so it can be looked back at.
+    * For the Dockerhub repo, when i added in the new major tag v1.0 docker now has that as the main version and I confirmed after also submitting v1.1 that v1.0 was not touched so it can be looked back at.
 
 3. 
 
-* I tested to ensure my workflow did its tasking by changing my index file in all my renditions a little bit. in `1.0.0` i kept it the same as when I changed it for Part 2. for 1.1.0 I changed the header and I did it one more time for 1.2.0 to confirm that the versions do change and also hold on to the previous version.
+* I tested to ensure my workflow did its tasking by changing my index file in all my renditions a little bit. in `1.0` i kept it the same as when I changed it for Part 2. for `1.1` I changed the header and I did it one more time for `1.2` to confirm that the versions do change and also hold on to the previous version.
 
-* I verified the image by pulling the new dockerhub version onto my local pc, running it and looking at my index page to see if the change applied.
+* I verified the image by pulling the new dockerhub version onto my local pc, running it and looking at my index page to see if the change applied. After running the changes were visible and will be seen in later images in proof section.
 
 [Dockerhub Repo](https://hub.docker.com/repository/docker/panoramicsunroof1/cafeweb/general)
 
-* This link will take you to my panoramicsunroof1/cafeweb repo and in the tags section you can see my versions `1, 1.0, 1.1, and 1.2` (I used 1.0.0 so i imagine it wont show the final .0 until I add in a patch version which was not required.)
+* This link will take you to my panoramicsunroof1/cafeweb repo and in the tags section you can see my versions `1, 1.0, 1.1, and 1.2` (I used `1.0.0` to push and tag, but the last .0 is the patch version. Because the `metadata` is set only for `Major` and `Major Minor` tags there wont be a third number for patch, even if the event is triggered on `v*.*.*`)
 
 ## Part 3 Proof images
 
@@ -238,7 +262,7 @@ name: Docker meta
 
 ![proof8](images/proof8.png)
 
-* Same image as in Proof 8 as it shows the new versions. Not just Major but also Major minor versions.
+* Same image as in Proof 8 as it shows the new versions. Not just Major but also Major minor versions on Dockerhub.
 <br>
 
 10. 
@@ -247,27 +271,10 @@ name: Docker meta
 ![proof10_1](images/proof10_1.png)
 ![proof10_2](images/proof10_2.png)
 
-* These images show me pulling my first `1.0.0` version which was edited for proof 5 and then my `1.2.0` version which is shown by the title header change.
+* These images show me pulling my first `1.0.0` version which was edited for proof 5 and then my `1.2.0` version which is shown by the title header change. I also made sure to add the `docker ps` to show that the versions are running and showing the ports etc.
 <br>
 
-## Part 4 Diagram
 
-* ![Diagram](images/Diagram.png)
-
-* This diagram shows a flow and loop of how this github action workflow would run. It starts with the user making changes, commiting them and then adding a tag and commiting the tag as well. In the github repo if your tag follows the versioning.
-```
-on:
-  # triggers on push to main branch
-  push:
-    tags:
-      - 'v*.*.*'
-```
-* it will begin the workflow, moving to the `metadata` to get the tags and labels as nessesary and then build and push will tag as needed and push it to docker hub
-
-* In docker hub the image becomes published with a tag of the version which allows users to pull the specific version they would like. This can loop back around to a user / developer pulling that new image and adding more and so on. (pulling obviously isn't required for the developer in this project, but lets say this was an open project to multiple people to edit as they see fit, that would be a step.)
-
-
-    * [Path to workflow](.github/workflows/docker-workflow.yml)
 
 ## Sources
 
