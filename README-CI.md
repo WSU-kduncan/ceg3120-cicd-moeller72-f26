@@ -59,11 +59,11 @@ on:
 ![Docker web](images/website.png)
 
 
-## Part 2 Github Actions and DockerHub
+## Part 2 GitHub Actions and DockerHub
 
 1. For this project making the PAT is just the same as it was for project 5. I went onto Dockerhub and in Account settings I created a PAT with read and write privileges (which allows the ability to push and pull that repo). I then saved that to a secure place.
 
-    * In the github repo Secrets tab in settings I created DOCKER_USERNAME with my docker username as the variable and DOCKER_TOKEN with the PAT that I just created. 
+    * In the GitHub repo Secrets tab in settings I created `DOCKER_USERNAME` with my docker username as the variable and `DOCKER_TOKEN` with the PAT that I just created. 
         * To get into the secrets, you want to open settings. Navigate to secrets and variables. Click on actions, select new repo secret and add what is needed.
 
 2. For this work flow the name was `Docker-Login-Build-Push` With the event / action triggers being. `On push to the main branch`
@@ -74,7 +74,7 @@ on:
 
 <br>
 
-* This shows that the trigger is when its pushed to the main branch. This is the area you would edit the file to change the trigger.
+* This shows that the trigger is when its pushed to the `main` branch. This is the area you would edit the file to change the trigger.
 
 ![Steps1](images/steps1.png)
 
@@ -140,7 +140,7 @@ on:
 ![Github actions](images/githubaction.png)
 <br>
 
-* This Proves that i have added secrets in the github actions which will be used by the workflow.
+* This Proves that i have added secrets in the `GitHub` actions which will be used by the workflow.
 
 3. 
 ![Successful Test](images/Success1.png)
@@ -165,10 +165,10 @@ on:
 
 1. Generating `tag`s
 
-* to see tage in a github repo you want to run either `git tag` or `git tag -l` 
+* to see `tag` in a GitHub repo you want to run either `git tag` or `git tag -l` 
 
 * To generate a tag you want to run `git tag -a v#.#.# -m "commit message here"`
-    * With `git tag -a` the `-a` means annotate (to note it is not required to use `-a` from this link [Gittag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) I used to help me understand tagging more other options are available but `-a` is noted as one of the simplest ways.) Followed by `v#.#.#` which is the version number you want then `-m ""` which is the tag commit message.
+    * With `git tag -a` the `-a` means annotate (to note it is not required to use `-a` from this link [Git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) I used to help me understand tagging more other options are available but `-a` is noted as one of the simplest ways.) Followed by `v#.#.#` which is the version number you want then `-m ""` which is the tag commit message.
 
 * From the same source referenced above the way you push a tag (I messed this up) Is `git push origin v#.#.#` not just git push (which is what I tried.)
 
@@ -218,17 +218,17 @@ name: Docker meta
 
     * labels Retrieves the docker image `lables` and passes them into the push step and applies the `metadata` to it. Which provides additional information about said image.
 
-    * For the Dockerhub repo, when i added in the new major tag v1.0 docker now has that as the main version and I confirmed after also submitting v1.1 that v1.0 was not touched so it can be looked back at.
+    * For the Dockerhub repo, when i added in the new major tag `v1.0` docker now has that as the main version and I confirmed after also submitting `v1.1` that `v1.0` was not touched so it can be looked back at.
 
 3. 
 
 * I tested to ensure my workflow did its tasking by changing my index file in all my renditions a little bit. in `1.0` i kept it the same as when I changed it for Part 2. for `1.1` I changed the header and I did it one more time for `1.2` to confirm that the versions do change and also hold on to the previous version.
 
-* I verified the image by pulling the new dockerhub version onto my local pc, running it and looking at my index page to see if the change applied. After running the changes were visible and will be seen in later images in proof section.
+* I verified the image by pulling the new Dockerhub version onto my local pc, running it and looking at my index page to see if the change applied. After running the changes were visible and will be seen in later images in proof section.
 
 [Dockerhub Repo](https://hub.docker.com/repository/docker/panoramicsunroof1/cafeweb/general)
 
-* This link will take you to my panoramicsunroof1/cafeweb repo and in the tags section you can see my versions `1, 1.0, 1.1, and 1.2` (I used `1.0.0` to push and tag, but the last .0 is the patch version. Because the `metadata` is set only for `Major` and `Major Minor` tags there wont be a third number for patch, even if the event is triggered on `v*.*.*`)
+* This link will take you to my `panoramicsunroof1/cafeweb` repo and in the tags section you can see my versions `1, 1.0, 1.1, and 1.2` (I used `1.0.0` to push and tag, but the last .0 is the patch version. Because the `metadata` is set only for `Major` and `Major Minor` tags there wont be a third number for patch, even if the event is triggered on `v*.*.*`)
 
 ## Part 3 Proof images
 
@@ -237,7 +237,7 @@ name: Docker meta
 
 ![proof6](images/proof6.png)
 
-* This proves that after running `git tag -l` that the previous versions tagged and commited are listed being `1.0.0, 1.1.0, 1.2.0`
+* This proves that after running `git tag -l` that the previous versions tagged and committed are listed being `1.0.0, 1.1.0, 1.2.0`
 <br>
 
 7. 
