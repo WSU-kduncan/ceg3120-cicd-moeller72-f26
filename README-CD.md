@@ -6,10 +6,15 @@
 
 
 
-* proff that ec2 has docker on it and that EC2 can run my website. 
+* proof that ec2 has docker on it and that EC2 can run my website. 
 
 ![Docker on EC2 running site on port 8080](Images_proj7/Running_site.png)
 
+
+
+* proof of script working in AWS
+
+![docker_script working](Images_proj7/scriptworking.png)
 
 ### Part 1 Sources
 
